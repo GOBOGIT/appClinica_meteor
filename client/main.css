@@ -1,0 +1,53 @@
+#contenido {
+ height: 100%;
+}
+
+#contenidoBloque {
+    margin-left: 30px!important;
+    margin-right: 30px !important;
+    
+}
+
+
+#portada {
+    height:350px;
+    background-color: rgb(153, 255, 204);
+    color: white;
+}
+
+#portadaSmall {
+    height:200px;
+    background-color: rgb(153, 255, 204);
+    color: white;
+}
+
+#menuPantallas {
+    background-color: rgb(153, 225, 204);
+    margin:0px;   
+}
+
+#menuSup {
+    margin-right:10px;
+    margin-top:10px;
+}
+
+#opciones {
+    margin-left: 30px!important;
+    margin-right: 30px !important;
+}
+
+#cabecera {
+    margin-top: 100px;
+}
+
+#cabeceraSmall {
+     margin-top: -20px;
+}
+
+#footer {
+    margin-top:100px;
+}
+    #footer .column {
+        padding:30px;
+    }
+

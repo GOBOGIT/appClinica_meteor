@@ -1,0 +1,62 @@
+<template name="avisos">
+    <!-- contenido -->
+    <div id="contenido" class="ui grid">
+        {{> cabecera}}           
+       <!-- menú busqueda -->
+        <div class="ui one item text menu wide filtros stackable">
+            <div class="item">
+                <div class="ui selection dropdown">
+                    <input name="gender" type="hidden">
+                    <div class="default text">Tipo de aviso</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item" data-value="0">Promociones</div>
+                        <div class="item" data-value="2">Urgencias médicas</div>
+                        <div class="item" data-value="3">Noticias</div>
+                    </div>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="ui button">
+                Limpiar filtros
+                </div>
+            </div>
+        </div>
+        <!--contenido -->
+        <div class="ui horizontal divider"></div>
+        <div class="ui ten wide centered column">
+            <div class="ui divided items">
+                <div class="ui fluid card">
+                    <div class="content">
+                        <div class="header">
+                            Nombre del aviso
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate elementum magna quis mollis. Suspendisse vel elementum mi. Etiam condimentum imperdiet quam. Duis sem ligula, vehicula quis volutpat ut, tincidunt ut eros. Vestibulum condimentum mi non cursus dictum. Vestibulum ut metus nec libero rutrum pellentesque. Fusce sit amet efficitur enim.
+                    </div>
+                </div>
+                <div class="ui fluid card">
+                    <div class="content">
+                        <div class="header">
+                            Nombre del aviso
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate elementum magna quis mollis. Suspendisse vel elementum mi. Etiam condimentum imperdiet quam. Duis sem ligula, vehicula quis volutpat ut, tincidunt ut eros. Vestibulum condimentum mi non cursus dictum. Vestibulum ut metus nec libero rutrum pellentesque. Fusce sit amet efficitur enim.
+                    </div>
+                </div>
+                <div class="ui fluid card">
+                    <div class="content">
+                        <div class="header">
+                            Nombre del aviso
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate elementum magna quis mollis. Suspendisse vel elementum mi. Etiam condimentum imperdiet quam. Duis sem ligula, vehicula quis volutpat ut, tincidunt ut eros. Vestibulum condimentum mi non cursus dictum. Vestibulum ut metus nec libero rutrum pellentesque. Fusce sit amet efficitur enim.
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{> footer}}
+    </div>
+</template>

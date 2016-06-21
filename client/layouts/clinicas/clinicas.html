@@ -1,0 +1,60 @@
+<template name="clinicas">
+    <!-- contenido -->
+    <div id="contenido" class="ui grid">
+        {{> cabecera}}
+        <!-- menú busqueda -->
+        <div class="ui one item text menu wide filtros stackable">
+            <div class="item">
+                <div class="ui selection dropdown">
+                    <input name="gender" type="hidden">
+                    <div class="default text">Estado</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item" data-value="0">Querétaro</div>
+                        <div class="item" data-value="2">Toluca</div>
+                        <div class="item" data-value="3">Distrito Federal</div>
+                    </div>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="ui button">
+                Limpiar filtros
+                </div>
+            </div>
+        </div>
+        <div class="ui horizontal divider"></div>
+        <!-- lista dummie -->
+        <div  class=" ui eight wide centered column">
+            <div class="ui divided link items">
+                <!-- item -->
+                <div class="item">
+                    <div class="ui tiny image">
+                        <img src="images/500x500.png">
+                    </div>
+                    <div class="content">  
+                        <div class="header">
+                        <a href="/clinica">Clínica 1</a>
+                        </div>
+                        <div class="description">
+                            <p>dirección</p>
+                        </div>
+                 </div>
+                </div>
+                <!-- item -->
+                <div class="item">
+                    <div class="ui tiny image">
+                        <img src="images/500x500.png">
+                    </div>
+                    <div class="content">  
+                        <div class="header">
+                        Clínica 2
+                        </div>
+                        <div class="description">
+                            <p>dirección</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{> footer}}
+    </div>
+</template>

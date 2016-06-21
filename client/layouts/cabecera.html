@@ -1,0 +1,41 @@
+<template name="cabecera">
+        {{> Template.dynamic template = cabeceraSel }}
+</template>
+
+<template name="cabeceraInicio">
+    <!-- cabecera -->
+    <div id="portada" class=" ui sixteen wide column">
+        <!-- menu -->
+        {{> inicioSesion }}
+        <div id="cabeceraSmall" class="ui center aligned icon header">
+            <h1><i class="circular icon"></i></h1>
+                <h1>titulo página</h1> 
+            <h3>Subtitulo página</h3>
+        </div>
+    </div>
+</template>
+
+<template name="cabeceraSmall">
+    <!-- cabecera -->
+    <div id="portadaSmall" class=" ui sixteen wide column ">
+        <!-- menu -->
+        {{> inicioSesion }}
+        <h1 id="cabeceraSmall" class="ui center aligned icon header">
+            <i class="circular icon"></i>
+        </h1>
+    </div>
+    <div id="menuPantallas" class="ui four item fluid secondary pointing menu stackable sticky">
+        {{#each secciones}}
+             
+            <a href="{{ url }}" class="item {{#if urlDir seccion }} active {{/if}}">{{ seccion }}</a>
+        {{/each}}
+    </div>
+</template>
+
+<template name="inicioSesion">
+    <div id="menuSup" class="ui text menu wide" >
+        <div class="right menu">
+            <div class="ui button">Iniciar sesión</div>
+        </div>
+    </div>
+</template>
