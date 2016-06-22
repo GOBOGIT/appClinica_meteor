@@ -1,0 +1,38 @@
+<template name="footer">
+    <!-- footer -->
+    <div class="ui horizontal divider"></div>
+    <div id="footer" class="grey sixteen wide column">
+        <div class="ui three column grid">
+            <div class="column">
+                <div class="ui list inverted">
+                    <a href="" class="item">Inicio</a>
+                    <a href="" class="item">Estudios Clínicos</a>
+                    <a href="" class="item">Clínicas</a>
+                    <a href="" class="item">Avisos</a>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui list inverted">
+                    <div class="item">Contacto</div>
+                    <div class="item">Dirección 1</div>
+                    <div class="item">Dirección 2</div>
+                    <div class="item">teléfono</div>
+                    <a  href="" class="item">email</a>
+                </div>
+            </div>
+            <div class="column right aligned">
+                {{> botSociales }}
+            </div>
+        </div>
+            <div class="ui horizontal divider"></div>
+    </div>
+</template>
+
+<template name="botSociales">
+  <button class="ui circular  icon button">
+    <i class="facebook icon"></i>
+  </button>
+  <button class="ui circular  icon button">
+    <i class="twitter icon"></i>
+  </button>
+</template>

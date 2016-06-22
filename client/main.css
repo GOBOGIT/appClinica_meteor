@@ -1,3 +1,7 @@
+html, body {
+    background-color: rgb(250,250,250) !important;
+}
+
 #contenido {
  height: 100%;
 }
@@ -27,8 +31,7 @@
 }
 
 #menuSup {
-    margin-right:10px;
-    margin-top:10px;
+    margin:10px;
 }
 
 #opciones {
