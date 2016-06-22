@@ -1,3 +1,4 @@
+import { Estudios } from '../../../imports/api/mongo.js';
 import './estudios.html';
 
 var listaTipo = [
@@ -24,7 +25,12 @@ Template.estudios.listaSexo = function() {
 };
 
 Template.estudios.helpers({
- estudios: [{
+
+estudios() {
+    return Estudios.find({});
+}
+
+/* estudios: [{
 	titulo: 'Estudio 1',
     descripcion: 'Descripción 1',
     esPromo: true
@@ -36,7 +42,7 @@ Template.estudios.helpers({
     titulo: 'Estudio 3',
     descripcion: 'Descripcion 3',
     esPromo: false  
- }],
+ }], */
 });
 
 Template.estudios.onRendered(function(){
