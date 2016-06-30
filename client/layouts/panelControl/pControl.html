@@ -1,87 +1,130 @@
-<template name="panelControl">
-  <div id="contenido" class="ui grid">
+<head>
+  <title> Panel de Control </title>
+</head>
+
+<template name="panelControlPpal">
+  <div id="contenidoPC" class="ui grid">
     {{>cabecera}}
     <!-- menú busqueda -->
     {{> filtrosEstudios }}
     <!-- contenido -->
     <div class="ui sixteen wide column">
       <div class="ui three column grid stackable">
-        <!-- lista dummie -->
-        <div class="white four wide column">
-          <h2>Estudios publicados</h2>
-          <div class="ui  divider"></div>
-          <!-- lista dummie -->
-          <div class="ui divided link items" id="contenidoFormPC">
-            <!-- loop items en Estudios -->
-            {{> itemEstudios }}
-          </div>
+        {{> listaPC }} 
+        {{#if pantallaInicio}} 
+          {{> vacio }} 
+        {{else}}
+          {{> detallesPC }} 
+        {{/if}}
+      </div>
+    </div>
+   {{#unless pantallaInicio}} {{> botonesOpciones }} {{/unless}}
+    {{> footerPC }}
+  </div>
+</template>
+
+<template name="listaPC">
+  <!-- lista dummie -->
+  <div class="white four wide column">
+    <h3>Estudios publicados</h3>
+    <div class="ui  divider"></div>
+    <!-- lista dummie -->
+    <div class="ui divided link items" id="contenidoFormPC">
+      <!-- loop items en Estudios -->
+      {{> itemEstudiosPC }}
+    </div>
+  </div>
+</template>
+
+<template name="detallesPC">
+  <!-- formularios de edición -->
+  <div class="white six wide column">
+    <h3>Datos generales</h3>
+    <div class="ui  divider"></div>
+    <div class="ui mini form">
+      <div class="field">
+        <label>Nombre del estudio</label>
+        <input name="first-name" placeholder="{{ estudios.titulo }}" type="text">
+      </div>
+      <div class="field">
+        <label>Información</label>
+        <textarea placeholder="{{ estudios.descripcion }}"></textarea>
+      </div>
+      <div class="field">
+        <label>Requisitos</label>
+        <textarea placeholder="{{ estudios.requisitos }}"></textarea>
+      </div>
+      <h4 class="ui dividing header">Fecha de valided</h4>
+      <div class=" two fields">
+        <div class=" field">
+          <label>Fecha inicio</label>
+          <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
         </div>
-        <!-- formularios de edición -->
-        <div class="white six wide column">
-          <h2>Datos generales</h2>
-          <div class="ui  divider"></div>
-          <form class="ui form">
-            <div class="field">
-              <label>Nombre del estudio</label>
-              <input name="first-name" placeholder="First Name" type="text">
-            </div>
-            <div class="field">
-              <label>Información</label>
-              <textarea></textarea>
-            </div>
-            <div class="field">
-              <label>Requisitos</label>
-              <textarea></textarea>
-            </div>
-            <h4 class="ui dividing header">Fecha de valided</h4>
-            <div class=" two fields">
-              <div class=" field">
-                <label>Fecha inicio</label>
-                <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
-              </div>
-              <div class=" field">
-                <label>Fecha fin</label>
-                <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="six wide column">
-          <h2>Precio y filtros</h2>
-          <div class="ui  divider"></div>
-          <form class="ui form">
-            <div class="field">
-              <label>Precio</label>
-              <input name="first-name" placeholder="First Name" type="text">
-            </div>
-            <div class="ui segment" style="background-color:gray;padding:20px">
-              <div class="ui form">
-                <div class="inline field">
-                  <div class="ui toggle checkbox">
-                    <label>Estudio en promoción</label>
-                    <input class="hidden" tabindex="0" type="checkbox">
-                  </div>
-                </div>
-                <div class="disabled field ">
-                  <label>Precio en promoción</label>
-                  <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
-                </div>
-                <div class="disabled field ">
-                  <label>Fecha fin de promoción</label>
-                  <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
-                </div>
-              </div>
-            </div>
-          </form>
+        <div class=" field">
+          <label>Fecha fin</label>
+          <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
         </div>
       </div>
     </div>
-    <div id="botonesAccionPC" class="right aligned sixteen wide column">
-      <div class="ui blue button">Nuevo registro</div>
-      <div class="ui red button">Eliminar registro</div>
-      <div class="ui green button right attached">Guardar cambios</div>
+  </div>
+  <!-- Columna precios y filtros -->
+  <div class="six wide column">
+    <h3>Precio y filtros</h3>
+    <div class="ui  divider"></div>
+    <div class="ui mini form">
+      <div class="fPrecio field">
+        <label>Precio</label>
+        <input type="number" name="first-name" placeholder="{{ estudios.precio }}">
+      </div>
+      <!-- sección promocion -->
+      <div class="ui segment" style="padding:10px">
+        <div class="ui mini form">
+          <div class="ui sliderPromo slider checkbox">
+            <input type="checkbox" checked="{{#if estudios.esPromo}}checked{{/if}}">
+            <label>Estudio en promoción</label>
+          </div>
+          <div class="ui divider"></div>
+          <div class="{{#unless estudios.esPromo}}disabled{{/unless}} field ">
+            <label>Precio en promoción</label>
+            <input type="number" name="validoDesde" placeholder="añadir precio en DB">
+          </div>
+          <div class="{{#unless estudios.esPromo}}disabled{{/unless}} field ">
+            <label>Fecha fin de promoción</label>
+            <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</template>
 
-    {{> footerPC }}
+<template name="itemEstudiosPC">
+  <!-- item -->
+  {{#each estudios }}
+  <div class="item">
+    <div class="content">
+
+      <a class="ui selPC" data-value="{{ titulo }}"> {{ titulo }} </a>
+      <div class="description">
+        <p>{{ descripcion }}</p>
+      </div>
+      <div class="ui right floated">
+        {{#if esPromo}}<i class="like icon"></i>{{/if}}
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</template>
+
+<template name="vacio">
+  <p>Seleccione o crea un registro nuevo</p>
+  <div class="ui blue button">Nuevo registro</div>  
+</template>
+
+<template name="botonesOpciones">
+  <div id="botonesAccionPC" class="right aligned sixteen wide column">
+    <div class="ui blue button">Nuevo registro</div>
+    <div class="ui red button">Eliminar registro</div>
+    <div class="ui green button right attached">Guardar cambios</div>
   </div>
 </template>

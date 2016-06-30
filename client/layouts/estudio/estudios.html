@@ -1,17 +1,121 @@
-<template name="estudios">
-    <!-- contenido -->
+<head>
+    <title>Estudios</title>
+</head>
+
+<template name="estudiosPpal">
     <div id="contenido" class="ui grid">
-        {{> cabecera}}
-        <!-- menú busqueda -->
-        {{> filtrosEstudios }}
-        <div class="ui horizontal divider"></div>
-        <!-- lista dummie -->
-        <div class=" ui eight wide centered column">
-            <div class="ui divided link items">
-                <!-- loop items en Estudios -->
-                {{> itemEstudios }}
+        {{> cabecera}} {{> Template.dynamic template = main}} {{> footer}}
+    </div>
+</template>
+
+<template name="estudiosTodos">
+    <!-- contenido -->
+    <!-- menú busqueda -->
+    {{> filtrosEstudios }}
+    <div class="ui horizontal divider"></div>
+    <!-- lista dummie -->
+    <div class=" ui eight wide centered column">
+        <div class="ui divided link items">
+            <!-- loop items en Estudios -->
+            {{> itemEstudios }}
+        </div>
+    </div>
+</template>
+
+<template name="estudio">
+    <!--contenido -->
+    <div class="ui horizontal divider"></div>
+    <div id="contenidoBloque" class="ui sixteen wide column">
+        <div class="ui two column grid mn stackable">
+            <!--columna izquierda -->
+            <div class="ten wide column">
+                <!-- info clinica -->
+                <div class="ui fluid card">
+                    <div class="content">
+                        <div class="header">
+                            {{#if estudios}} {{ estudios.titulo }} {{/if}}
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <h4 class="ui header">información</h4>
+                        <p> {{ estudios.descripcion }}</p>
+                    </div>
+                    {{#if estudios.requisitos }}
+                    <div class="extra content">
+                        <h4 class="ui header">Requisitos</h4>
+                        <p>{{ estudios.requisitos }}</p>
+                    </div>
+                    {{/if }}
+                </div>
+                <!-- banner -->
+                <div class="ui fluid card">
+                    <div class="image banner25">
+                        <img src="images/500x150banners.png">
+                    </div>
+                </div>
+            </div>
+            <!-- columna derecha -->
+            <div class="six wide column">
+                <div class="ui fluid card">
+                    <div class="content">
+                        <div class="header">
+                            Clínicas que ofrecen éste estudio
+                        </div>
+                        <div class="description">
+                            <div class="ui horizontal divider">
+                                <i class="browser icon"></i>
+                            </div>
+                            <div class="ui divided link items">
+                                <!-- item -->
+                                <div class="item">
+                                    <div class="content">
+                                        <h4 class="ui header">
+                                            <a href="/clinica">Clínica 1</a>
+                                        </h4>
+                                        <div class="description">
+                                            <p>dirección</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- item -->
+                                <div class="item">
+                                    <div class="content">
+                                        <h4 class="ui header">
+                                            Clínica 2
+                                        </h4>
+                                        <div class="description">
+                                            <p>dirección</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui fluid card">
+                    <div class="content">
+                        <div class="header">
+                            Precio
+                        </div>
+                        <div class="meta">
+                            precios al cosumidor
+                        </div>
+                        <div class="description">
+                            <div class="ui large horizontal statistic">
+                                <div class="value">
+                                    {{ estudios.precio }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{#if estudios.esPromo }}
+                    <div class="extra content">
+                        <i class="red heart icon"></i> está en promoción
+                        <p> <i class="wait icon"></i> promoción válida hasta el 20/12/2017</p>
+                    </div>
+                    {{/if}}
+                </div>
             </div>
         </div>
-        {{> footer}}
     </div>
 </template>

@@ -18,9 +18,7 @@ html, body {
     margin:0px !important;
 }
 
-form  {
-    padding:20px;
-}
+
 
 
 /***** USUARIO *****/
@@ -68,6 +66,10 @@ form  {
 
 
 /**** PANEL DE CONTROL ****/
+
+.ui.mini {
+    margin:20px;
+}
 
 #portadaPC {
     height:100px;

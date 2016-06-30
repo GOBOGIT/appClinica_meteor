@@ -3,10 +3,12 @@
   <!-- menú busqueda -->
   <div class="ui one item text menu wide filtros stackable computer tablet only row">
     <div class="item">
+      <!-- boton promocion -->
+
       <div class="ui csexo selection dropdown">
         <!-- input tipo sexo -->
-        <input name="sexo" value="I" type="hidden">
-        <div class="default text">Indistinto</div>
+        <input name="sexoLista" type="hidden">
+        <div class="default text">Sexo indistinto</div>
         <i class="dropdown icon"></i>
         <div class="menu">
           {{#each tipoSexo}}
@@ -26,17 +28,12 @@
         </div>
       </div>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <div class="ui button">
+      <div class="ui limpiar button ">
         Limpiar filtros
       </div>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <div class="ui search">
-        <div class="ui icon input">
-          <!-- input buqueda manual -->
-          <input class="prompt" placeholder="Bùsqueda manual..." type="text">
-          <i class="search icon"></i>
-        </div>
-        <div class="results"></div>
+      <div class="ui btPromo toggle button">
+        Promoción
       </div>
     </div>
   </div>
@@ -48,7 +45,7 @@
   <div class="item">
     <div class="content">
       <div class="header">
-        <a href="/estudio">{{titulo }}</a>
+        <a href="/estudios/{{ titulo }}">{{titulo }}</a>
       </div>
       <div class="description">
         <p>{{ descripcion }}</p>
@@ -60,3 +57,4 @@
   </div>
   {{/each}}
 </template>
+

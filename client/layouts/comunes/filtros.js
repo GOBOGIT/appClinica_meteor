@@ -1,46 +1,44 @@
 // variables temporarles en cliente
 import { ReactiveDict } from 'meteor/reactive-dict';
-
 import { Estudios } from '../../../imports/api/mongo.js';
 import './filtros.html';
 
 state = new ReactiveDict();
-estadoSexo = new ReactiveDict();
-// inicializa valor por defecto
-//estadoSexo ='I';
+
+Template.itemEstudios.onCreated(function(){
+    state.set('btPromo', false);
+    Meteor.subscribe('itemEstudios');
+});
+
+
+
 
 Template.filtrosEstudios.helpers({
     tipoEstudio: [
-        { 'id': 'PR', 'texto': 'En promoción' },
+        { 'id': 'I', 'texto': 'Todos los estudios' },
         { 'id': 'EM', 'texto': 'Embarazo' }
     ],
     tipoSexo: [
-        { 'id': 'I', 'texto': ' Indiferente' },
-        { 'id': 'M', 'texto': ' Masculino' },
-        { 'id': 'F', 'texto': 'Femenino' }
+        { 'id': 'I', 'texto': 'Sexo indistinto' },
+        { 'id': 'M', 'texto': 'Hombre' },
+        { 'id': 'H', 'texto': 'Mujer' }
     ]
 });
 
 // lee todos los documentos de la colleción estudios
-Template.itemEstudios.helpers({
-    estudios() {
- 
-       if (estadoSexo.get('csexo') == null ) estadoSexo.set('csexo','I');
+Template.registerHelper('estudios', () => {
+       var arrayres;
+       if (state.get('csexo') == null || state.get('csexo') == "I" ) {
+           arrayres = ["H","M"];
+        } else {
+            arrayres = [state.get('csexo')];
+      }
 
-       estadoSexoSel = estadoSexo.get('csexo');
-       console.log(estadoSexoSel);
-
-        if (state.get('cestudio') && estadoSexoSel) {
-            switch (state.get('cestudio')) {
-                case 'PR':
-                    return Estudios.find({ 'esPromo': true, 'sexo': estadoSexoSel });
-                default:
-                    return Estudios.find({'sexo': estadoSexoSel});
-            }
+      if(state.get('btPromo')) {
+           return Estudios.find({'sexo': { $in: arrayres }, 'esPromo': true });
+        } else {
+            return Estudios.find({'sexo': { $in: arrayres }, 'esPromo': { $in: [true, false]}});
         }
-        // devuelve todos sin filtros
-        return Estudios.find({'sexo': estadoSexoSel});
-    },
 });
 
 
@@ -49,29 +47,34 @@ Template.filtrosEstudios.onRendered(function () {
     // activa Jquery
     $('.ui.dropdown').dropdown();
 
-    $('.filtros .button').on('click', function () {
+    $('.limpiar').on('click', function () {
         $('.filtros .ui.dropdown').dropdown('clear');
     });
 });
 
 Template.filtrosEstudios.events({
     // recoge selección en dropdow tipo estudio
-    'change .cestudio'(event, instance) {
+    'change .csexo'(event) {
+        event.preventDefault();
+        state.set('csexo', event.target.value);
+    },
+    
+    'change .cestudio'(event) {
         event.preventDefault();
         state.set('cestudio', event.target.value);
-
     },
 
-    'change .csexo'(event, instance) {
+    'click .limpiar'(event) {
         event.preventDefault();
-        estadoSexo.set('csexo', event.target.value);
-       // console.log(estadoSexo.get('csexo'));
+        state.set('selection', '');
+        state.set('csexo',"I");
+        state.set('cestudio', "I");
+        state.set('btPromo', false);
     },
 
-    'click .ui.button'() {
-        //event.preventDefault();
-        state.set('selection', '');
-        console.log('click en limpiar');
+    'click .btPromo'(event) {
+        event.preventDefault();
+        state.set('btPromo', !state.get('btPromo'));
     }
 
-})
+});
