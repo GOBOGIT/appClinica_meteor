@@ -1,0 +1,62 @@
+<!-- filtros de la seccion estudios -->
+<template name="filtrosEstudios">
+  <!-- menú busqueda -->
+  <div class="ui one item text menu wide filtros stackable computer tablet only row">
+    <div class="item">
+      <div class="ui csexo selection dropdown">
+        <!-- input tipo sexo -->
+        <input name="sexo" value="I" type="hidden">
+        <div class="default text">Indistinto</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#each tipoSexo}}
+          <div class="item" data-value="{{ id }}">{{ texto }}</div>
+          {{/each}}
+        </div>
+      </div>
+      <div class="ui cestudio selection dropdown">
+        <!-- input por estudio -->
+        <input name="tipo" type="hidden">
+        <div class="default text">Por tipo</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#each tipoEstudio}}
+          <div class="item" data-value="{{ id }}">{{ texto }}</div>
+          {{/each}}
+        </div>
+      </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="ui button">
+        Limpiar filtros
+      </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="ui search">
+        <div class="ui icon input">
+          <!-- input buqueda manual -->
+          <input class="prompt" placeholder="Bùsqueda manual..." type="text">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="itemEstudios">
+  <!-- item -->
+  {{#each estudios }}
+  <div class="item">
+    <div class="content">
+      <div class="header">
+        <a href="/estudio">{{titulo }}</a>
+      </div>
+      <div class="description">
+        <p>{{ descripcion }}</p>
+      </div>
+      <div class="ui right floated">
+        {{#if esPromo}}<i class="like icon"></i>{{/if}}
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</template>

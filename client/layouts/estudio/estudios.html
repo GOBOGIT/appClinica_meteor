@@ -1,0 +1,17 @@
+<template name="estudios">
+    <!-- contenido -->
+    <div id="contenido" class="ui grid">
+        {{> cabecera}}
+        <!-- menú busqueda -->
+        {{> filtrosEstudios }}
+        <div class="ui horizontal divider"></div>
+        <!-- lista dummie -->
+        <div class=" ui eight wide centered column">
+            <div class="ui divided link items">
+                <!-- loop items en Estudios -->
+                {{> itemEstudios }}
+            </div>
+        </div>
+        {{> footer}}
+    </div>
+</template>

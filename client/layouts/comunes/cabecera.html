@@ -1,5 +1,5 @@
 <template name="cabecera">
-        {{> Template.dynamic template = cabeceraSel }}
+    {{> Template.dynamic template = cabeceraSel }}
 </template>
 
 <template name="cabeceraInicio">
@@ -9,7 +9,7 @@
         {{> inicioSesion }}
         <div id="cabeceraSmall" class="ui center aligned icon header">
             <h1><i class="circular icon"></i></h1>
-                <h1>titulo página</h1> 
+            <h1>titulo página</h1>
             <h3>Subtitulo página</h3>
         </div>
     </div>
@@ -24,27 +24,47 @@
             <i class="circular icon"></i>
         </h1>
     </div>
-        <div id="menuPantallas" class="ui four item fluid secondary pointing menu stackable sticky">
-            {{#each secciones}}
-                 <a href="{{ url }}" class="item {{#if urlDir seccion }} active {{/if}}">{{ seccion }}</a>
-            {{/each}}
-        </div>
+    <div id="menuPantallas" class="ui four item fluid secondary pointing menu stackable sticky">
+        {{#each secciones}}
+        <a href="{{ url }}" class="item {{#if urlDir seccion }} active {{/if}}">{{ seccion }}</a> {{/each}}
+    </div>
+</template>
+
+<template name="cabeceraPC">
+    <div id="portadaPC" class=" ui sixteen wide column">
+        <!-- menu -->
+        {{> cerrarSesion }}
+        <h1 id="cabeceraPC" class="ui center aligned icon header"></h1>
+    </div>
+    <div id="menuPantallasPC" class="ui three item fluid secondary pointing menu stackable sticky">
+        <a class="item active">Estudios</a>
+        <a class="item"> Clínicas</a>
+        <a class="item">Avisos</a>
+    </div>
 </template>
 
 <template name="inicioSesion">
-    <div id="menuSup" class="ui text menu wide" >
+    <div id="menuSup" class="ui text menu wide">
         <div class="left menu">
             <div class="ui small inverted statistic">
                 <div class="inverted value">
-                    <i class="small inverted share icon"></i>
-                    &nbsp;800 600 345
-                    
+                    <i class="small inverted share icon"></i> &nbsp;800 600 345
                 </div>
             </div>
         </div>
- 
         <div class="right menu">
             <div class="ui button">Iniciar sesión</div>
+        </div>
+    </div>
+</template>
+
+<template name="cerrarSesion">
+    <div class="ui text menu wide">
+        Panel de Control APP
+        <div class="right menu">
+            <div class="item">
+                <div class="ui red massive button">Cerrar sesión</div>
+            </div>
         </div>
     </div>
 </template>

@@ -1,3 +1,6 @@
+
+/***** COMPARTIDO ****/
+
 html, body {
     background-color: rgb(250,250,250) !important;
 }
@@ -8,10 +11,19 @@ html, body {
 
 #contenidoBloque {
     margin-left: 30px!important;
-    margin-right: 30px !important;
-    
+    margin-right: 30px !important;   
 }
 
+.menu {
+    margin:0px !important;
+}
+
+form  {
+    padding:20px;
+}
+
+
+/***** USUARIO *****/
 
 #portada {
     height:350px;
@@ -53,4 +65,41 @@ html, body {
     #footer .column {
         padding:30px;
     }
+
+
+/**** PANEL DE CONTROL ****/
+
+#portadaPC {
+    height:100px;
+    background-color: rgb(30,130,230);
+    color: white;
+}
+
+#menuPantallasPC {
+    background-color: rgb(30, 150, 230);
+    margin:0px;   
+}
+
+#filtrosPC {
+    padding:20px;
+  background-color: rgb(220,220,220);
+}
+
+#contenidoFormPC {
+    background-color: white;
+    padding:  20px !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 650px;
+}
+
+#botonesAccionPC {
+    background-color: rgb(220,220,220);
+    margin:0px;
+    padding-right:20px;
+}
+
+#footerPC  {
+    padding:20px;
+}
 

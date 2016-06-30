@@ -1,0 +1,87 @@
+<template name="panelControl">
+  <div id="contenido" class="ui grid">
+    {{>cabecera}}
+    <!-- menú busqueda -->
+    {{> filtrosEstudios }}
+    <!-- contenido -->
+    <div class="ui sixteen wide column">
+      <div class="ui three column grid stackable">
+        <!-- lista dummie -->
+        <div class="white four wide column">
+          <h2>Estudios publicados</h2>
+          <div class="ui  divider"></div>
+          <!-- lista dummie -->
+          <div class="ui divided link items" id="contenidoFormPC">
+            <!-- loop items en Estudios -->
+            {{> itemEstudios }}
+          </div>
+        </div>
+        <!-- formularios de edición -->
+        <div class="white six wide column">
+          <h2>Datos generales</h2>
+          <div class="ui  divider"></div>
+          <form class="ui form">
+            <div class="field">
+              <label>Nombre del estudio</label>
+              <input name="first-name" placeholder="First Name" type="text">
+            </div>
+            <div class="field">
+              <label>Información</label>
+              <textarea></textarea>
+            </div>
+            <div class="field">
+              <label>Requisitos</label>
+              <textarea></textarea>
+            </div>
+            <h4 class="ui dividing header">Fecha de valided</h4>
+            <div class=" two fields">
+              <div class=" field">
+                <label>Fecha inicio</label>
+                <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
+              </div>
+              <div class=" field">
+                <label>Fecha fin</label>
+                <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="six wide column">
+          <h2>Precio y filtros</h2>
+          <div class="ui  divider"></div>
+          <form class="ui form">
+            <div class="field">
+              <label>Precio</label>
+              <input name="first-name" placeholder="First Name" type="text">
+            </div>
+            <div class="ui segment" style="background-color:gray;padding:20px">
+              <div class="ui form">
+                <div class="inline field">
+                  <div class="ui toggle checkbox">
+                    <label>Estudio en promoción</label>
+                    <input class="hidden" tabindex="0" type="checkbox">
+                  </div>
+                </div>
+                <div class="disabled field ">
+                  <label>Precio en promoción</label>
+                  <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
+                </div>
+                <div class="disabled field ">
+                  <label>Fecha fin de promoción</label>
+                  <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="botonesAccionPC" class="right aligned sixteen wide column">
+      <div class="ui blue button">Nuevo registro</div>
+      <div class="ui red button">Eliminar registro</div>
+      <div class="ui green button right attached">Guardar cambios</div>
+    </div>
+
+    {{> footerPC }}
+  </div>
+</template>
