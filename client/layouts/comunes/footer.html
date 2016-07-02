@@ -1,7 +1,6 @@
 <template name="footer">
     <!-- footer -->
-    <div class="ui horizontal divider"></div>
-    <div id="footer" class="grey sixteen wide column">
+    <footer id="footer" class="ui vertical segment">
         <div class="ui three column grid">
             <div class="column">
                 <div class="ui list inverted">
@@ -21,25 +20,20 @@
                 </div>
             </div>
             <div class="column right aligned">
-                {{> botSociales }}
+                <button class="ui circular  icon button">
+                    <i class="facebook icon"></i>
+                </button>
+                <button class="ui circular  icon button">
+                    <i class="twitter icon"></i>
+                </button>
             </div>
         </div>
-        <div class="ui horizontal divider"></div>
-    </div>
+    </footer>
 </template>
 
-<template name="botSociales">
-    <button class="ui circular  icon button">
-    <i class="facebook icon"></i>
-  </button>
-    <button class="ui circular  icon button">
-    <i class="twitter icon"></i>
-  </button>
-</template>
-
-
+<!-- footer Panel de Control -->
 <template name="footerPC">
-    <div id="footerPC" class="grey sixteen wide column">
+    <div id="footerPC" class="ui vertical segment">
         Footer panel de control
     </div>
 </template>

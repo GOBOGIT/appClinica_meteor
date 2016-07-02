@@ -5,69 +5,51 @@
 <!-- cabecera página principal -->
 <template name="cabeceraInicio">
     <!-- cabecera -->
-    <div id="portada" class=" ui sixteen wide column">
         <!-- menu -->
-        {{> inicioSesion }}
-        <div id="cabeceraSmall" class="ui center aligned icon header">
-            <h1><i class="circular icon"></i></h1>
+        <div id="portada" class= "ui center aligned icon header">
+            {{> inicioSesion}}
+            <div class="ui horizontal divider"></div>
+            <i class="circular icon"></i>
             <h1>titulo página</h1>
             <h3>Subtitulo página</h3>
         </div>
-    </div>
-</template>
+ </template>
 
 <!-- cabecera páginas -->
 <template name="cabeceraSmall">
     <!-- cabecera -->
-    <div id="portadaSmall" class=" ui sixteen wide column ">
-        <!-- menu -->
-        {{> inicioSesion }}
-        <h1 id="cabeceraSmall" class="ui center aligned icon header">
-            <i class="circular icon"></i>
-        </h1>
-    </div>
-    <div id="menuPantallas" class="ui four item fluid secondary pointing menu stackable sticky">
-        {{#each secciones}}
-        <a href="{{ url }}" class="item {{#if urlDir seccion }} active {{/if}}">{{ seccion }}</a> {{/each}}
-    </div>
+        <div id="portadaSmall" class="ui center">
+            <!-- menu -->
+            {{> inicioSesion }}
+        </div>
+        <div id="menuPantallas" class="ui four item fluid secondary pointing menu stackable sticky">
+            {{#each seccionesUsuario}}
+                <a href="{{ url }}" class="item {{#if urlDir seccion }} active {{/if}}">{{ seccion }}</a> 
+            {{/each}}
+        </div>
 </template>
 
 <!-- cabecera Panel de Control -->
 <template name="cabeceraPC">
-    <div id="portadaPC" class=" ui sixteen wide column">
+    <div id="portadaPC" class=" ui center">
         <!-- menu -->
         {{> cerrarSesion }}
-        <h1 id="cabeceraPC" class="ui center aligned icon header"></h1>
     </div>
     <div id="menuPantallasPC" class="ui three item fluid secondary pointing menu stackable sticky">
-        <a class="item active">Estudios</a>
-        <a class="item"> Clínicas</a>
-        <a class="item">Avisos</a>
+        {{#each seccionesPC}}
+            <a class="item">{{ seccion }}</a> 
+        {{/each}}
     </div>
 </template>
 
 <template name="inicioSesion">
-    <div id="menuSup" class="ui text menu wide">
-        <div class="left menu">
-            <div class="ui small inverted statistic">
-                <div class="inverted value">
-                    <i class="small inverted share icon"></i> &nbsp;800 600 345
-                </div>
-            </div>
-        </div>
-        <div class="right menu">
-            <div class="ui button">Iniciar sesión</div>
-        </div>
+    <div style="text-align:left; padding:10px; background-color:lightblue">
+        &nbsp;800 600 345  
     </div>
 </template>
 
 <template name="cerrarSesion">
-    <div class="ui text menu wide">
-        Panel de Control APP
-        <div class="right menu">
-            <div class="item">
-                <div class="ui red massive button">Cerrar sesión</div>
-            </div>
-        </div>
+    <div style="text-align:left; padding:10px; background-color:lightblue">
+        <div class="ui red button">Cerrar sesión</div>
     </div>
 </template>

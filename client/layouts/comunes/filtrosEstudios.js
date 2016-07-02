@@ -1,7 +1,7 @@
 // variables temporarles en cliente
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { Estudios } from '../../../imports/api/mongo.js';
-import './filtros.html';
+import './filtrosEstudios.html';
 
 state = new ReactiveDict();
 
@@ -9,9 +9,6 @@ Template.itemEstudios.onCreated(function(){
     state.set('btPromo', false);
     Meteor.subscribe('itemEstudios');
 });
-
-
-
 
 Template.filtrosEstudios.helpers({
     tipoEstudio: [
@@ -25,7 +22,8 @@ Template.filtrosEstudios.helpers({
     ]
 });
 
-// lee todos los documentos de la colleción estudios
+// lee todos los documentos de la colleción estudios:
+// itemEstudios e itemEstudiosPC
 Template.registerHelper('estudios', () => {
        var arrayres;
        if (state.get('csexo') == null || state.get('csexo') == "I" ) {

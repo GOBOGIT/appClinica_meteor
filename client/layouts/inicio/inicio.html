@@ -1,41 +1,38 @@
 <template name="inicio">
-    <main>
-        <!-- contenido -->
-        <div id="contenido" class="ui grid">
-            {{> cabecera}}
-            <!-- bloque -->
-            <div class="ui horizontal divider"></div>
-            <div class=" ui sixteen wide column">
-                <!-- servicios -->
-                <div id="opciones" class="ui five cards centered grid stackable">
-                    <div class="ui orange link  centered card ">
-                        <a class="image" href="/estudios"><img src="images/500x500.png"></a>
-                        <div class="content">
-                            <a class="header" href="#">Estudios clínicos</a>
-                        </div>
-                    </div>
-                    <div class="ui olive link centered card">
-                        <a class="image" href="clinicas.html"><img src="images/500x500.png"></a>
-                        <div class="content">
-                            <a class="header" href="#">Clínicas</a>
-                        </div>
-                    </div>
-                    <div class="ui teal  link centered card">
-                        <a class="image" href="#"><img src="images/500x500.png"></a>
-                        <div class="content">
-                            <a class="header" href="#">Avisos</a>
-                        </div>
-                    </div>
-                    <div class="ui teal  link centered card">
-                        <a class="image" href="#"><img src="images/500x500banners.png"></a>
-                        <div class="content">
-                            <a class="header" href="#">Promociones</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- banners -->
+    {{> cabecera}}
+    <div id="opcionesInicio" class=" ui grid">
+        {{> inicioPpal }}
+    </div>
+    {{> footer}}
+</template>
+
+<template name="inicioPpal">
+    <!-- contenido -->
+    <div class="ui horizontal divider"></div>
+    <div  class="ui four cards centered grid stackable">
+        <div class="ui orange link  centered card ">
+            <a class="image" href="/estudios"><img src="images/500x500.png"></a>
+            <div class="content">
+                <a class="header" href="#">Estudios clínicos</a>
             </div>
-            {{> footer}}s
         </div>
-    </main>
+        <div class="ui olive link centered card">
+            <a class="image" href="clinicas.html"><img src="images/500x500.png"></a>
+            <div class="content">
+                <a class="header" href="#">Clínicas</a>
+            </div>
+        </div>
+        <div class="ui teal  link centered card">
+            <a class="image" href="#"><img src="images/500x500.png"></a>
+            <div class="content">
+                <a class="header" href="#">Avisos</a>
+            </div>
+        </div>
+        <div class="ui teal  link centered card">
+            <a class="image" href="#"><img src="images/500x500banners.png"></a>
+            <div class="content">
+                <a class="header" href="#">Promociones</a>
+            </div>
+        </div>
+    </div>
 </template>

@@ -1,32 +1,29 @@
-<head>
-    <title>Estudios</title>
-</head>
-
 <template name="estudiosPpal">
-    <div id="contenido" class="ui grid">
-        {{> cabecera}} {{> Template.dynamic template = main}} {{> footer}}
+    {{> cabecera}} 
+    <div class=" ui grid">       
+        {{> Template.dynamic template = main}} 
     </div>
+{{> footer}}
 </template>
 
-<template name="estudiosTodos">
+<template name="estudios">
     <!-- contenido -->
     <!-- menú busqueda -->
     {{> filtrosEstudios }}
-    <div class="ui horizontal divider"></div>
     <!-- lista dummie -->
-    <div class=" ui eight wide centered column">
-        <div class="ui divided link items">
-            <!-- loop items en Estudios -->
-            {{> itemEstudios }}
+        <div class="contenidoBloque ui eight wide centered column">
+            <div class="ui divided link items">
+                <!-- loop items en Estudios -->
+                {{> itemEstudios }}
+            </div>
         </div>
-    </div>
 </template>
 
 <template name="estudio">
     <!--contenido -->
     <div class="ui horizontal divider"></div>
-    <div id="contenidoBloque" class="ui sixteen wide column">
-        <div class="ui two column grid mn stackable">
+    <div class="contenidoBloque ui sixteen wide column">
+        <div class="ui two column grid stackable">
             <!--columna izquierda -->
             <div class="ten wide column">
                 <!-- info clinica -->
@@ -118,4 +115,23 @@
             </div>
         </div>
     </div>
+</template>
+
+<template name="itemEstudios">
+  <!-- item -->
+  {{#each estudios }}
+  <div class="item">
+    <div class="content">
+      <div class="header">
+        <a href="/estudios/{{ titulo }}">{{titulo }}</a>
+      </div>
+      <div class="description">
+        <p>{{ descripcion }}</p>
+      </div>
+      <div class="ui right floated">
+        {{#if esPromo}}<i class="like icon"></i>{{/if}}
+      </div>
+    </div>
+  </div>
+  {{/each}}
 </template>

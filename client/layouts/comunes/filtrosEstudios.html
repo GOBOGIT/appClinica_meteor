@@ -1,10 +1,9 @@
 <!-- filtros de la seccion estudios -->
 <template name="filtrosEstudios">
   <!-- menú busqueda -->
-  <div class="ui one item text menu wide filtros stackable computer tablet only row">
+  <div class="ui one item text menu wide filtros stackable row">
     <div class="item">
       <!-- boton promocion -->
-
       <div class="ui csexo selection dropdown">
         <!-- input tipo sexo -->
         <input name="sexoLista" type="hidden">
@@ -28,33 +27,13 @@
         </div>
       </div>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <div class="ui limpiar button ">
-        Limpiar filtros
-      </div>
-      &nbsp;&nbsp;&nbsp;&nbsp;
       <div class="ui btPromo toggle button">
         Promoción
       </div>
-    </div>
-  </div>
-</template>
-
-<template name="itemEstudios">
-  <!-- item -->
-  {{#each estudios }}
-  <div class="item">
-    <div class="content">
-      <div class="header">
-        <a href="/estudios/{{ titulo }}">{{titulo }}</a>
-      </div>
-      <div class="description">
-        <p>{{ descripcion }}</p>
-      </div>
-      <div class="ui right floated">
-        {{#if esPromo}}<i class="like icon"></i>{{/if}}
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="ui limpiar button ">
+        Limpiar filtros
       </div>
     </div>
   </div>
-  {{/each}}
 </template>
-

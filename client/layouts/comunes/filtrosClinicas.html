@@ -1,0 +1,22 @@
+<!-- filtros de la seccion clinicas -->
+<template name="filtrosClinicas">
+    <!-- menú busqueda -->
+    <div class="ui one item text menu wide filtros stackable row">
+        <div class="item">
+            <div class="ui cciudades selection dropdown">
+                <input name="ciudadesLista" type="hidden">
+                <div class="default text">Estado</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    {{#each ciudades }}
+                        <div class="item" data-value="{{@index}}">{{ this }} </div>
+                    {{/each}}
+                </div>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="ui limpiar button">
+            Limpiar Ciudades
+            </div>
+        </div>
+    </div>
+</template>

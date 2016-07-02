@@ -13,3 +13,4 @@ Template.estudio.helpers({
        return Estudios.findOne({ 'titulo': FlowRouter.getParam('titulo') });
     }
 });
+

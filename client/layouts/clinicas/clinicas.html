@@ -1,45 +1,102 @@
+<template name="clinicasPpal">
+     {{> cabecera}} 
+    <div id="contenido" class="ui grid">
+        {{> Template.dynamic template = main}}        
+    </div>
+    {{> footer}}
+
+</template>
+
 <template name="clinicas">
     <!-- contenido -->
-    <div id="contenido" class="ui grid">
-        {{> cabecera}}
-        <!-- menú busqueda -->
-        <div class="ui one item text menu wide filtros stackable">
-            <div class="item">
-                <div class="ui selection dropdown">
-                    <input name="gender" type="hidden">
-                    <div class="default text">Estado</div>
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        {{#each listaCiudades }}
-                            <div class="item" data-value="{{@index}}">{{ this }} </div>
-                        {{/each}}
-                    </div>
-                </div>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="ui button">
-                Limpiar filtros
-                </div>
-            </div>
-        </div>
-        <div class="ui horizontal divider"></div>
+    <!-- menú busqueda -->
+    {{> filtrosClinicas}}
         <!-- lista dummie -->
-        <div  class=" ui eight wide centered column">
-            <div class="ui divided link items">
-                <!-- item -->
-                {{ #each clinicas }}
-                <div class="item">
-                    <div class="content">  
-                        <div class="header">
-                        <a href="/clinica">{{nombre}} </a>
-                        </div>
-                        <div class="description">
-                            <p>{{calle}} </p>
-                        </div>
-                    </div>
-                </div>
-                {{/each}}
-            </div>
+    <div  class="contenidoBloque ui eight wide centered column">
+        <div class="ui divided link items">
+            <!-- loop items en Estudios -->
+            {{> itemClinicas }}
         </div>
-        {{> footer}}
     </div>
 </template>
+
+<template name="clinica">
+    <!-- contenido -->
+    <div class="ui horizontal divider"></div>
+    <div class="contenidoBloque ui sixteen wide column">
+        <div class="ui two column grid mn stackable">
+            <!--columna izquierda -->
+            <div class="eleven wide column">
+                <!-- info clinica -->
+                <div class="ui fluid card">
+                    <div class="content">
+                        <div class="header">
+                            Nombre del a Clínica
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <h4 class="ui header">
+                            Servicios de la clínica
+                        </h4>
+                        <p></p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate elementum magna quis mollis. Suspendisse vel elementum mi. Etiam condimentum imperdiet quam. Duis sem ligula, vehicula quis volutpat ut, tincidunt ut eros. Vestibulum condimentum mi non cursus dictum. Vestibulum ut metus nec libero rutrum pellentesque. Fusce sit amet efficitur enim.
+                    </div>
+                </div>
+                <!-- banner -->
+                <div class="ui fluid card">
+                    <div class="image banner25">
+                        <img src="images/500x150banners.png">
+                    </div>
+                </div>
+            </div>
+            <!-- columna derecha -->
+            <div class="five wide column">
+                <div class="ui fluid card">
+                    <div class="content">
+                        <div class="header">
+                            Datos útiles
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <h4 class="ui header">
+                            <i class="ui marker icon"></i>
+                            Mapa
+                        </h4>
+                    </div>
+                    <div class="image">
+                            <img src="images/mapa.png">
+                        </div>
+                    <div class="extra content">
+                        <h4 class="ui header">
+                            <i class="ui wait icon"></i>
+                            Horarios
+                        </h4>
+                        {{ horarios }}
+                    </div>
+                    <div class="extra content">
+                        <h4 class="ui header">
+                            <i class="ui doctor icon"></i>
+                            Contacto
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+ <template name="itemClinicas">              
+    <!-- item -->
+    {{ #each clinicas }}
+    <div class="item">
+        <div class="content">  
+            <div class="header">
+            <a href="/clinicas/{{ nombre }}">{{nombre}} </a>
+            </div>
+            <div class="description">
+                <p>{{calle}} </p>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+ </template>

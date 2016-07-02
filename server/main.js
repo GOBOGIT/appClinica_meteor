@@ -20,9 +20,10 @@ Meteor.publish('itemEstudios', function() {
     return Estudios.find();
 });
 
+/*
 Meteor.publish('itemEstudiosPC', function() {
     return Estudios.find();
-});
+}); */
 
 
 
