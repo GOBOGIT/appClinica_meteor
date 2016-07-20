@@ -1,19 +1,20 @@
-
-
 <template name="panelControlPpalEstudios">
-    <!-- menú busqueda -->
-    {{> filtrosEstudios }}
-    <!-- contenido -->
-    <div class="contenidoBloquePC ui sixteen wide column">
+  <!-- menú busqueda -->
+  {{> filtrosEstudios }}
+  <!-- contenido -->
+  <div class="contenidoBloquePC ui sixteen wide column">
+    <form id="formularioEstudios" class="ui form fluid">
       <div class="ui {{#if pantallaInicio}}two{{else}}three{{/if}} column grid stackable">
-        {{> listaPC }} 
+        {{> listaPC }}
         {{#if pantallaInicio}} 
-          {{> vacio }} 
-        {{else}}
-          {{> detallesPC }} 
+            {{> vacio }} 
+          {{else}} 
+            {{> detallesPC }} 
+            {{> botonesOpciones }}
         {{/if}}
       </div>
-    </div>
+    </form>
+  </div>
 </template>
 
 <template name="listaPC">
@@ -46,29 +47,27 @@
   <div class="seven wide column">
     <h4>Datos generales</h4>
     <div class="ui  divider"></div>
-    <div class="ui small form">
-      <div class="field">
-        <label>Nombre del estudio</label>
-        <input name="first-name" placeholder="{{ estudios.titulo }}" type="text">
+    <div class="required field">
+      <label>Nombre del estudio</label>
+      <input  name="titulo" placeholder="{{ estudios.titulo }}" type="text">
+    </div>
+    <div class="field">
+      <label>Información</label>
+      <textarea rows="4" placeholder="{{ estudios.descripcion }}"></textarea>
+    </div>
+    <div class="field">
+      <label>Requisitos</label>
+      <textarea rows="4" placeholder="{{ estudios.requisitos }}"></textarea>
+    </div>
+    <h4 class="ui dividing header">Fecha de valided</h4>
+    <div class=" two fields">
+      <div class=" field">
+        <label>Fecha inicio</label>
+        <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
       </div>
-      <div class="field">
-        <label>Información</label>
-        <textarea rows="4" placeholder="{{ estudios.descripcion }}"></textarea>
-      </div>
-      <div class="field">
-        <label>Requisitos</label>
-        <textarea rows="4" placeholder="{{ estudios.requisitos }}"></textarea>
-      </div>
-      <h4 class="ui dividing header">Fecha de valided</h4>
-      <div class=" two fields">
-        <div class=" field">
-          <label>Fecha inicio</label>
-          <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
-        </div>
-        <div class=" field">
-          <label>Fecha fin</label>
-          <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
-        </div>
+      <div class=" field">
+        <label>Fecha fin</label>
+        <input type="date" name="validoHasta" placeholder="dd/mm/yyyy">
       </div>
     </div>
   </div>
@@ -76,39 +75,35 @@
   <div class="five wide column">
     <h4>Precio y filtros</h4>
     <div class="ui  divider"></div>
-    <div class="ui small form">
-      <div class="fPrecio field">
-        <label>Precio</label>
-        <input type="number" name="first-name" placeholder="{{ estudios.precio }}">
-      </div>
-      <!-- sección promocion -->
-      <div class="ui segment" style="padding:10px">
-        <div class="ui small form">
-          <div class="ui sliderPromo slider checkbox">
-            <input type="checkbox" checked="{{#if estudios.esPromo}}checked{{/if}}">
-            <label>Estudio en promoción</label>
-          </div>
-          <div class="ui divider"></div>
-          <div class="{{#unless estudios.esPromo}}disabled{{/unless}} field ">
-            <label>Precio en promoción</label>
-            <input type="number" name="validoDesde" placeholder="añadir precio en DB">
-          </div>
-          <div class="{{#unless estudios.esPromo}}disabled{{/unless}} field ">
-            <label>Fecha fin de promoción</label>
-            <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
-          </div>
+    <div class="{{#if selPromo}}disabled{{/if}} field">
+      <label>Precio</label>
+      <input type="text" name="precio" placeholder="{{ estudios.precio }}">
+    </div>
+    <!-- sección promocion -->
+    <div class="ui segment" style="padding:10px">
+      <div class="ui small form">
+        <div class="ui sliderPromo slider checkbox">
+          <input name="esPromoCheck" type="checkbox" checked="{{#if selPromo}}checked{{/if}}">
+          <label>Estudio en promoción</label>
+        </div>
+        <div class="ui divider"></div>
+        <div class="{{#unless selPromo}}disabled{{/unless}} field ">
+          <label>Precio en promoción</label>
+          <input type="text" name="precioPromo" placeholder="añadir precio en DB">
+        </div>
+        <div class="{{#unless selPromo}}disabled{{/unless}} field ">
+          <label>Fecha fin de promoción</label>
+          <input type="date" name="promoValidoHasta" placeholder="dd/mm/yyyy">
         </div>
       </div>
-      {{> botonesOpciones }}
-    </div>
-     
+    </div>    
   </div>
- 
 </template>
 
 <template name="botonesOpciones">
- <div class="two ui buttons">
-    <div class="ui basic red left attached button">Eliminar</div>
-    <div class="ui basic green right attached button">Guardar</div>
+  <div id="botonesSubmit" class=" three ui buttons">
+    <div class="ui left clear  button">cancelar cambios</div>
+    <div class="ui red center attached button">Eliminar</div>
+    <div class="ui green right attached button btnGuardar">Guardar</div>
   </div>
 </template>
