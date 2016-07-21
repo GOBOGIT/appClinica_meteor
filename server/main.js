@@ -11,19 +11,11 @@ Meteor.publish('estudio', function(titulo) {
     return Estudios.find({ titulo: titulo });
 });
 
-/*
-Meteor.publish('detallesPC', function(titulo) {
-    return Estudios.find({ titulo: titulo });
-});
-*/
+
 Meteor.publish('itemEstudios', function() {
     return Estudios.find();
 });
 
-/*
-Meteor.publish('itemEstudiosPC', function() {
-    return Estudios.find();
-}); */
 
 
 

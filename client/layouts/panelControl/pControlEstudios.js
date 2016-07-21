@@ -1,31 +1,43 @@
 import { ReactiveDict } from 'meteor/reactive-dict';
+import { ReactiveVar } from 'meteor/reactive-var';
 import { Estudios } from '../../../imports/api/mongo.js';
 import './pControlEstudios.html';
 
 state = new ReactiveDict();
-
+selP = new ReactiveVar();
 var sel;
 
-Template.listaPC.onCreated(function () {
- //   state.set('btPromo', false);
-    state.set('pantallaInicio', true);
 
+Template.listaPC.onCreated(function () {
+    state.set('pantallaInicio', true);
     Meteor.subscribe('itemEstudios');
+
 });
 
 Template.detallesPC.helpers({
-    selPromo() {
-        return state.get('esPromo');
-    },
-
-    estudios() {
+    selPromo: function() {
+        console.log(selP.get());
+        //var espA=  selPromo.get();
+        if(selP.get()) 
+            return true;
+        else
+            return false;
+     //  return {
+       //   esp: selPromo.get()
+      //  };
+    
+} ,
+    estudios: function() {
          // limpia la validación del formulario   
         resetForm();
         // recoge datos de la colleción según selección
        sel = Estudios.findOne({ 'titulo': state.get('seleccion') });
-        state.set('esPromo', sel.esPromo);
-        return sel;
-    }
+       selP.set(sel.esPromo);
+      // state.set('esPromo', sel.esPromo);
+       
+       return sel;
+    },
+
 });
 
 Template.panelControlPpalEstudios.helpers({
@@ -39,34 +51,46 @@ Template.listaPC.events({
     'click .selPC'(event) {
         event.preventDefault();
         state.set('pantallaInicio', false);
-        state.set('seleccion', $(event.target).closest('a').data('value'));
+        // se probó console.log( $(event.target).closest('a').data('value'));
+        // pero en las actulizaciones del item no refrescaba
+
+       state.set('seleccion', $(event.target).closest('a').text());
     }
 });
 
 Template.panelControlPpalEstudios.events({
-    // 'submit #formularioEstudios'(event){
         
     'submit #formularioEstudios'(event){
-        
-      //  console.log(state.get('esPromo'));
-        Estudios.update(sel._id, {
-            $set: { 
-            'titulo':  event.target.titulo.value
-      },
-        });
+ 
         event.preventDefault();
+
+      var objeto = {};
+
+        // esta propiedad es obligatoria
+          objeto.titulo = event.target.titulo.value;
+          objeto.esPromo = event.target.esPromoCheck.checked;
+          // propiedades opcionales
+          if( event.target.descripcion.value) objeto.descripcion = event.target.descripcion.value;
+          if( event.target.requisitos.value) objeto.requisitos = event.target.requisitos.value;
+          if( event.target.precio.value) objeto.precio = event.target.precio.value;
+         
+
+        var setObjeto = { $set: objeto};
+      
+        Estudios.update(sel._id, setObjeto );
+        state.set('seleccion', event.target.titulo.value) ;
         state.set('pantallaInicio', false);
-        state.set('seleccion',event.target.titulo.value) ;
+       
     }
 });
 
 
 // activa o desactiva las opciones de promoción
 Template.detallesPC.events({
-    'submit .sliderPromo'(event) {
-        event.preventDefault();
-        
-        state.set('esPromo', !state.get('esPromo'));
+    'click .sliderPromo'(event) {
+      event.preventDefault();
+     selP.set(selP.get())
+     // state.set('esPromo', !state.get('esPromo'));
     }
 });
 

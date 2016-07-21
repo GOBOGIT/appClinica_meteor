@@ -7,7 +7,10 @@ state = new ReactiveDict();
 
 Template.itemEstudios.onCreated(function(){
     state.set('btPromo', false);
-    Meteor.subscribe('itemEstudios');
+    
+
+        Meteor.subscribe('itemEstudios');
+
 });
 
 Template.filtrosEstudios.helpers({

@@ -28,7 +28,7 @@
       {{#each estudios }}
       <div class="item">
         <div class="content">
-          <a class="ui selPC" data-value="{{ titulo }}"> {{ titulo }} </a>
+          <a class="ui selPC" data-value="{{titulo}}">{{titulo}}</a>
           <div class="description">
             <p>{{ descripcion }}</p>
           </div>
@@ -53,22 +53,11 @@
     </div>
     <div class="field">
       <label>Información</label>
-      <textarea rows="4" placeholder="{{ estudios.descripcion }}"></textarea>
+      <textarea  name="descripcion" rows="4" placeholder="{{ estudios.descripcion }}"></textarea>
     </div>
     <div class="field">
       <label>Requisitos</label>
-      <textarea rows="4" placeholder="{{ estudios.requisitos }}"></textarea>
-    </div>
-    <h4 class="ui dividing header">Fecha de valided</h4>
-    <div class=" two fields">
-      <div class=" field">
-        <label>Fecha inicio</label>
-        <input type="date" name="validoDesde" placeholder="dd/mm/yyyy">
-      </div>
-      <div class=" field">
-        <label>Fecha fin</label>
-        <input type="date" name="validoHasta" placeholder="dd/mm/yyyy">
-      </div>
+      <textarea name="requisitos" rows="4" placeholder="{{ estudios.requisitos }}"></textarea>
     </div>
   </div>
   <!-- Columna precios y filtros -->
@@ -81,19 +70,16 @@
     </div>
     <!-- sección promocion -->
     <div class="ui segment" style="padding:10px">
+       {{selPromo}}
       <div class="ui small form">
         <div class="ui sliderPromo slider checkbox">
-          <input name="esPromoCheck" type="checkbox" checked="{{#if selPromo}}checked{{/if}}">
+          <input name="esPromoCheck" type="checkbox" checked="{{#if selPromo}}checked{{/if}}" >
           <label>Estudio en promoción</label>
         </div>
         <div class="ui divider"></div>
-        <div class="{{#unless selPromo}}disabled{{/unless}} field ">
+        <div class="{{#unless selPromo.esp}}disabled{{/unless}} field ">
           <label>Precio en promoción</label>
           <input type="text" name="precioPromo" placeholder="añadir precio en DB">
-        </div>
-        <div class="{{#unless selPromo}}disabled{{/unless}} field ">
-          <label>Fecha fin de promoción</label>
-          <input type="date" name="promoValidoHasta" placeholder="dd/mm/yyyy">
         </div>
       </div>
     </div>    
@@ -104,6 +90,6 @@
   <div id="botonesSubmit" class=" three ui buttons">
     <div class="ui left clear  button">cancelar cambios</div>
     <div class="ui red center attached button">Eliminar</div>
-    <div class="ui green right attached button btnGuardar">Guardar</div>
+    <div class="ui green right attached button submit btnGuardar">Guardar</div>
   </div>
 </template>
