@@ -1,7 +1,5 @@
 import './cabecera.html';
 
-
-
 Template.cabeceraSmall.helpers({
 // spaceBars devuelve el valor seccion y lo refresa a secc
 // urlDir seccion (parametro)

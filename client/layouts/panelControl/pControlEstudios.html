@@ -62,7 +62,20 @@
   </div>
   <!-- Columna precios y filtros -->
   <div class="five wide column">
-    <h4>Precio y filtros</h4>
+   <h4>Filtros</h4>
+{{> listaSexo }}
+            <div class="ui cestudio selection dropdown">
+        <!-- input por estudio -->
+        <input name="tipo" type="hidden">
+        <div class="default text">{{estudios.tipo}}</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#each tipoEstudio}}
+          <div class="item" data-value="{{ id }}">{{ texto }}</div>
+          {{/each}}
+        </div>
+      </div>
+    <h4>Precio</h4>
     <div class="ui  divider"></div>
     <div class="{{#if selPromo}}disabled{{/if}} field">
       <label>Precio</label>
@@ -72,12 +85,12 @@
     <div class="ui segment" style="padding:10px">
        {{selPromo}}
       <div class="ui small form">
-        <div class="ui sliderPromo slider checkbox">
-          <input name="esPromoCheck" type="checkbox" checked="{{#if selPromo}}checked{{/if}}" >
+        <div class=" sliderPromo  checkbox">
+          <input name="esPromoCheck" type="checkbox" checked="{{#if selPromo}}checked{{/if}}">
           <label>Estudio en promoción</label>
         </div>
         <div class="ui divider"></div>
-        <div class="{{#unless selPromo.esp}}disabled{{/unless}} field ">
+        <div class="{{#unless selPromo}}disabled{{/unless}} field ">
           <label>Precio en promoción</label>
           <input type="text" name="precioPromo" placeholder="añadir precio en DB">
         </div>
@@ -92,4 +105,19 @@
     <div class="ui red center attached button">Eliminar</div>
     <div class="ui green right attached button submit btnGuardar">Guardar</div>
   </div>
+</template>
+
+
+<template name="listaSexo" >
+        <div class="ui csexo selection dropdown">
+        <!-- input tipo sexo -->
+        <input name="sexoLista" type="hidden" fireOnInit="true">
+        <div class="default text">{{selSexo}}</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#each tipoSexo}}
+          <div class="item" data-value="{{ id }}">{{ texto }}</div>
+          {{/each}}
+        </div>
+      </div>
 </template>

@@ -1,42 +1,60 @@
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Estudios } from '../../../imports/api/mongo.js';
+
+import '../../../lib/json.js';
 import './pControlEstudios.html';
 
 state = new ReactiveDict();
 selP = new ReactiveVar();
 var sel;
 
-
 Template.listaPC.onCreated(function () {
     state.set('pantallaInicio', true);
     Meteor.subscribe('itemEstudios');
+});
+
+// onRender para codigo Jquery
+Template.listaSexo.onRendered(function () {
+    // activa Jquery
+   this.$('.ui.dropdown').dropdown({on: 'hover'});
+});
+
+Template.listaSexo.helpers({
+    tipoSexo: function(){
+        return listaSexo;
+    },
+
+    selSexo:function() {
+    Meteor.defer(() => {
+      $('.csexo').dropdown('clear');
+      $('.csexo').dropdown('refresh');
+    });
+        console.log(sel.sexo);
+        return sel.sexo;
+    },
+
+ 
+
 
 });
 
 Template.detallesPC.helpers({
     selPromo: function() {
-        console.log(selP.get());
-        //var espA=  selPromo.get();
-        if(selP.get()) 
-            return true;
-        else
-            return false;
-     //  return {
-       //   esp: selPromo.get()
-      //  };
-    
-} ,
+        return selP.get(); 
+    } ,
     estudios: function() {
          // limpia la validación del formulario   
         resetForm();
         // recoge datos de la colleción según selección
        sel = Estudios.findOne({ 'titulo': state.get('seleccion') });
        selP.set(sel.esPromo);
-      // state.set('esPromo', sel.esPromo);
-       
+
+          
        return sel;
     },
+
+
 
 });
 
@@ -84,12 +102,11 @@ Template.panelControlPpalEstudios.events({
     }
 });
 
-
 // activa o desactiva las opciones de promoción
 Template.detallesPC.events({
     'click .sliderPromo'(event) {
       event.preventDefault();
-     selP.set(selP.get())
+     selP.set(!selP.get())
      // state.set('esPromo', !state.get('esPromo'));
     }
 });
@@ -100,6 +117,11 @@ function resetForm() {
   form.form('clear');
   // remove the error class so it wont show error msg ( semantic-ui bug ? )
   form.removeClass('error');
+
+
+
+
+
 }
 
 //********** VALIDACION

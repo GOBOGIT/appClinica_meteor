@@ -1,28 +1,27 @@
 // variables temporarles en cliente
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { Estudios } from '../../../imports/api/mongo.js';
+import '../../../lib/json.js';
 import './filtrosEstudios.html';
 
 state = new ReactiveDict();
 
 Template.itemEstudios.onCreated(function(){
     state.set('btPromo', false);
-    
-
         Meteor.subscribe('itemEstudios');
-
 });
+
 
 Template.filtrosEstudios.helpers({
     tipoEstudio: [
         { 'id': 'I', 'texto': 'Todos los estudios' },
         { 'id': 'EM', 'texto': 'Embarazo' }
     ],
-    tipoSexo: [
-        { 'id': 'I', 'texto': 'Sexo indistinto' },
-        { 'id': 'M', 'texto': 'Hombre' },
-        { 'id': 'H', 'texto': 'Mujer' }
-    ]
+ 
+    tipoSexo: function() {
+        
+        return listaSexo;
+    }
 });
 
 // lee todos los documentos de la colleción estudios:
