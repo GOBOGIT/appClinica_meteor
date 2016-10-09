@@ -1,4 +1,5 @@
 import { Estudios } from '../../../imports/api/mongo.js';
+import '../../../imports/startup/accounts-config.js';
 import './estudios.html';
 
 Template.estudio.onCreated(function() {
